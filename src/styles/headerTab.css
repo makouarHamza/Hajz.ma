@@ -1,0 +1,45 @@
+/* Container styling */
+.tab-container {
+  padding: 10px;
+  background: #f8f9fa;
+  border-radius: 12px;
+}
+
+.nav-list {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: 10px;
+}
+
+/* Base Link Styling */
+.nav-list a {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  border-radius: 8px;
+  color: #555;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+/* Icon Spacing */
+.nav-list i {
+  margin-right: 10px;
+  font-size: 1.2rem;
+}
+
+/* Hover Effect */
+.nav-list a:hover {
+  background-color: #e9ecef;
+  color: #000;
+}
+
+/* Active Link (React Router) */
+.nav-list a.active {
+  background-color: white; /* Your brand blue */
+  color: black;
+  box-shadow: 0 4px 10px rgba(13, 110, 253, 0.2);
+}

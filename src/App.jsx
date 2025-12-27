@@ -5,6 +5,7 @@ import "./styles/headerTab.css"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css'; // Corrected path
 import { useState } from 'react';
+import Footer from './layouts/footer';
 
 function App() {
   const [isAdmin,setIsAdmin] = useState(false);
@@ -75,6 +76,8 @@ function App() {
           <Route path='hotels' element={<h1>htels</h1>}/>
         </Routes>
       </BrowserRouter>
+      
+      <Footer/>
     </div>
 
     </>

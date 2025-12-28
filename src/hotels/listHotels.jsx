@@ -1,13 +1,24 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { MapPin } from 'lucide-react';
+import { useDispatch, useSelector } from 'react-redux';
+import { allHotelsData, getDataHotels, hotelStatus } from './hotelsSlice';
 
 const ListHotels= () => {
-  const [destination, setDestination] = useState('');
+    const hotelData = useSelector(allHotelsData)
+    const status = useSelector(hotelStatus)
+    const dispatch = useDispatch()
+    
+    useEffect(function(){
+        if(status === 'idle') {
+            dispatch(getDataHotels())
+        }
+    },[dispatch])
+    const [destination, setDestination] = useState('');
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(destination);
-  };
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log(destination);
+    };
 
   return (
     <>
@@ -40,6 +51,8 @@ const ListHotels= () => {
         </div>
       </form>
     </div>
+    
+
     
     </>
   );

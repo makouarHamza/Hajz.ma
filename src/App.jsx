@@ -6,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css'; // Corrected path
 import { useState } from 'react';
 import Footer from './layouts/footer';
-import ListHotels from './hotels/listHotels';
+import ListHotels from './hotels/hotelsList';
 
 function App() {
   const [isAdmin,setIsAdmin] = useState(false);

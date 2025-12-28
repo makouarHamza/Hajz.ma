@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { MapPin } from 'lucide-react';
 import { useDispatch, useSelector } from 'react-redux';
 import { allHotelsData, getDataHotels, hotelStatus } from './hotelsSlice';
+import HotelCard from './hotelCard';
 
 const ListHotels= () => {
     const hotelData = useSelector(allHotelsData)
@@ -13,6 +14,7 @@ const ListHotels= () => {
             dispatch(getDataHotels())
         }
     },[dispatch])
+
     const [destination, setDestination] = useState('');
 
     const handleSubmit = (e) => {
@@ -51,6 +53,11 @@ const ListHotels= () => {
         </div>
       </form>
     </div>
+    {
+    hotelData?hotelData.map((hotel,index)=>
+    <HotelCard key={index} dataHotel={hotel}/>
+      ):<p>loading</p>
+    }
     
 
     

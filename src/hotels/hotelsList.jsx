@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { use, useEffect, useState } from 'react';
 import { MapPin } from 'lucide-react';
 import { useDispatch, useSelector } from 'react-redux';
 import { allHotelsData, getDataHotels, hotelStatus } from './hotelsSlice';
@@ -16,10 +16,12 @@ const ListHotels= () => {
     },[dispatch])
 
     const [destination, setDestination] = useState('');
+    const [filtredList,setFiltredList] = useState([])
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(destination);
+        setFiltredList(hotelData.filter((hotel)=>hotel.city.trim().toLowerCase().includes(destination.trim().toLowerCase())));
+        // console.log(filtredList);
     };
 
   return (
@@ -35,7 +37,7 @@ const ListHotels= () => {
                 <MapPin size={18} className="text-secondary" />
               </span>
               <input
-                type="text"
+                type="search"
                 id="destination"
                 className="form-control border-start-0"
                 placeholder="Where are you going?"
@@ -56,9 +58,11 @@ const ListHotels= () => {
     <div className='container py-5'>
       <h2 className='mb-4 fw-bold'>Available Hotels</h2>
       {
-      hotelData?hotelData.map((hotel,index)=>
+      filtredList.length!==0?filtredList.map((hotel,index)=>
       <HotelCard key={index} dataHotel={hotel}/>
-        ):<p>loading</p>
+        ):hotelData.map((hotel,index)=>
+      <HotelCard key={index} dataHotel={hotel}/>
+        )
       }
     </div>
     

@@ -51,19 +51,19 @@ function App() {
           <div className='tab-container'>
             <ul className='nav-list'>
               <li>
-                <NavLink to='hotels'>
+                <NavLink to={isAdmin?'manageHotels':'hotels'}>
                   <i className='bi bi-building-fill'></i>
                   Hotels
                 </NavLink>
               </li>
               <li>
-                <NavLink to='cars'>
+                <NavLink to={isAdmin?'manageCars':'cars'}>
                     <i className='bi bi-car-front-fill'></i>
                     Cars
                 </NavLink>
               </li>
               <li>
-                <NavLink to='flights'>
+                <NavLink to={isAdmin?'manageFlights':'flights'}>
                     <i className='bi bi-airplane-engines-fill'></i>
                     Flights
                 </NavLink>
@@ -76,6 +76,9 @@ function App() {
           <Route path='cars' element={<h1>cars</h1>}/>
           <Route path='flights' element={<h1>flights</h1>}/>
           <Route path='hotels' element={ <ListHotels /> }/>
+          <Route path='manageCars' element={<h1>manage Cars</h1>}/>
+          <Route path='manageFlights' element={<h1>manage flights</h1>}/>
+          <Route path='manageHotels' element={ <h1>manage hotels</h1> }/>
         </Routes>
       </BrowserRouter>
       

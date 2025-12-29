@@ -21,8 +21,12 @@ const ListHotels= () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         setFiltredList(hotelData.filter((hotel)=>hotel.city.trim().toLowerCase().includes(destination.trim().toLowerCase())));
-        // console.log(filtredList);
     };
+
+    const handlerReset = () => {
+      setFiltredList([]);
+      setDestination("")
+    }
 
   return (
     <>
@@ -51,6 +55,9 @@ const ListHotels= () => {
         <div className="mt-4">
           <button type="submit" className="btn btn-primary px-4">
             Search Hotels
+          </button>
+          <button type='reset' onClick={handlerReset} className="btn btn-secondary px-2 m-1">
+            Reset
           </button>
         </div>
       </form>

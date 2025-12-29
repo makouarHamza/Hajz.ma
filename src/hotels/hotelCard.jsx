@@ -27,7 +27,7 @@ function HotelCard({dataHotel}){
                             <div className="text-end">
                                 <div className="d-flex align-items-center justify-content-end text-warning">
                                     <Star size={16} fill="currentColor" />
-                                    <span className="ms-1 fw-bold text-dark">4.8</span>
+                                    <span className="ms-1 fw-bold text-dark">{dataHotel.rating}</span>
                                 </div>
                                 <small className="text-muted">1254 reviews</small>
                             </div>

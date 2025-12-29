@@ -1,12 +1,13 @@
 import { use, useEffect, useState } from 'react';
 import { MapPin } from 'lucide-react';
 import { useDispatch, useSelector } from 'react-redux';
-import { allHotelsData, getDataHotels, hotelStatus } from './hotelsSlice';
+import { allHotelsData, getDataHotels, hotelError, hotelStatus } from './hotelsSlice';
 import HotelCard from './hotelCard';
 
 const ListHotels= () => {
     const hotelData = useSelector(allHotelsData)
     const status = useSelector(hotelStatus)
+    const error = useSelector(hotelError)
     const dispatch = useDispatch()
     
     useEffect(function(){
@@ -26,6 +27,15 @@ const ListHotels= () => {
     const handlerReset = () => {
       setFiltredList([]);
       setDestination("")
+    }
+
+    let content = "";
+    if(status === "loading"){
+      content = <p>loading...</p>
+    } else if(status === "succeeded"){
+      content = (filtredList.length>0? filtredList:hotelData).map((hotel,index) => <HotelCard dataHotel={hotel} key={index} />)
+    } else if(status === "failed"){
+      content = <p>{error}</p>
     }
 
   return (
@@ -65,11 +75,7 @@ const ListHotels= () => {
     <div className='container py-5'>
       <h2 className='mb-4 fw-bold'>Available Hotels</h2>
       {
-      filtredList.length!==0?filtredList.map((hotel,index)=>
-      <HotelCard key={index} dataHotel={hotel}/>
-        ):hotelData.map((hotel,index)=>
-      <HotelCard key={index} dataHotel={hotel}/>
-        )
+      content
       }
     </div>
     

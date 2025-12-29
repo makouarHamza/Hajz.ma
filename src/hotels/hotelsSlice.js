@@ -32,7 +32,7 @@ const hotelsSlice = createSlice({
             state.status = 'succeeded'
             state.hotels = state.hotels.concat(action.payload)
         })
-        .addCase(getDataHotels.rejected,(state, action) => {
+        .addCase(getDataHotels.rejected, (state, action) => {
             state.status = 'failed'
             state.error = action.error.message
         })
@@ -41,3 +41,4 @@ const hotelsSlice = createSlice({
 export default hotelsSlice.reducer
 export const allHotelsData = (state) => state.hotels.hotels
 export const hotelStatus = (state) => state.hotels.status
+export const hotelError = (state) => state.hotels.error

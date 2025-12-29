@@ -53,11 +53,15 @@ const ListHotels= () => {
         </div>
       </form>
     </div>
-    {
-    hotelData?hotelData.map((hotel,index)=>
-    <HotelCard key={index} dataHotel={hotel}/>
-      ):<p>loading</p>
-    }
+    <div className='container py-5'>
+      <h2 className='mb-4 fw-bold'>Available Hotels</h2>
+      {
+      hotelData?hotelData.map((hotel,index)=>
+      <HotelCard key={index} dataHotel={hotel}/>
+        ):<p>loading</p>
+      }
+    </div>
+    
     
 
     

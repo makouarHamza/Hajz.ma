@@ -8,6 +8,7 @@ import { useState } from 'react';
 import Footer from './layouts/footer';
 import ListHotels from './hotels/hotelsList';
 import HotelManage from './hotels/hotelmanage';
+import NewHotelForm from './hotels/newHotelForm';
 
 function App() {
   const [isAdmin,setIsAdmin] = useState(false);
@@ -80,6 +81,8 @@ function App() {
           <Route path='manageCars' element={<h1>manage Cars</h1>}/>
           <Route path='manageFlights' element={<h1>manage flights</h1>}/>
           <Route path='manageHotels' element={ <HotelManage /> }/>
+          <Route path='manageHotels/addEditHotel' element={ <NewHotelForm /> }/>
+          <Route path='manageHotels/addEditHotel/:idToEdit' element={ <NewHotelForm /> }/>
         </Routes>
       </BrowserRouter>
       

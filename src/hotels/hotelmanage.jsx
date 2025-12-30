@@ -1,6 +1,6 @@
 import { PencilLine, Plus, Trash2 } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { allHotelsData, deleteHotel, getDataHotels, hotelError, hotelStatus } from "./hotelsSlice";
 import { useEffect } from "react";
 
@@ -9,7 +9,7 @@ function HotelManage(){
     const status = useSelector(hotelStatus);
     const error = useSelector(hotelError);
     const dispatch = useDispatch();
-
+    const navigate = useNavigate()
     useEffect(function(){
         if(status === 'idle') {
             dispatch(getDataHotels())
@@ -59,7 +59,7 @@ function HotelManage(){
                     <h2 className='mb-4 fw-bold'>Mange hotel</h2>
                 </div>
                 <div>
-                    <Link className="btn btn-dark" >
+                    <Link to="addEditHotel" className="btn btn-dark" >
                     <Plus className="size-4 mr-2"/> 
                     &nbsp;&nbsp; Add Hotel
                     </Link>
@@ -91,7 +91,7 @@ function HotelManage(){
                                     <td className="text-muted small">{hotel.amenities.join(', ')}</td>
                                     
                                     <td className="text-end">
-                                        <button className="btn btn-outline-secondary btn-sm me-2 border-light-subtle">
+                                        <button onClick={()=>navigate("addEditHotel/"+hotel.id)} className="btn btn-outline-secondary btn-sm me-2 border-light-subtle">
                                             <PencilLine size={16} className="text-dark" />
                                         </button>
                                         <button onClick={()=>handlerDelete(hotel.id)} className="btn btn-danger btn-sm">

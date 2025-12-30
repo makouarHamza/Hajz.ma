@@ -34,7 +34,7 @@ function HotelCard({dataHotel}){
                         </div>
 
                         <div className="d-flex flex-wrap gap-2 my-3">
-                            <span className="badge gb-light text-dark border d-flex align-items-center py-2 px-3">
+                            <span className="badge bg-light text-dark border d-flex align-items-center py-2 px-3">
                                 <Wifi size={14} className="me-2"/> Wifi
                             </span>
                             <span className="badge bg-light text-dark border d-flex align-items-center py-2 px-3">

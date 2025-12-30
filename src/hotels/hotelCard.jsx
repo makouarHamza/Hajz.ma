@@ -49,7 +49,7 @@ function HotelCard({dataHotel}){
                         <div className="d-flex justify-content-between align-item-end mt-3">
                             <div>
                                 <p className="text-muted mb-0 small">From</p>
-                                <h3 className="fw-bold mb-0">{dataHotel.price} DH</h3>
+                                <h3 className="fw-bold mb-0">${dataHotel.price}</h3>
                                 <p className="text-muted mb-0 small">per noght</p>
                             </div>
                             <button className="btn btn-dark btn-lg px-4 fw-bold" style={{ borderRadius: '8px'}}>

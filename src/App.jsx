@@ -7,6 +7,7 @@ import 'bootstrap-icons/font/bootstrap-icons.css'; // Corrected path
 import { useState } from 'react';
 import Footer from './layouts/footer';
 import ListHotels from './hotels/hotelsList';
+import HotelManage from './hotels/hotelmanage';
 
 function App() {
   const [isAdmin,setIsAdmin] = useState(false);
@@ -78,7 +79,7 @@ function App() {
           <Route path='hotels' element={ <ListHotels /> }/>
           <Route path='manageCars' element={<h1>manage Cars</h1>}/>
           <Route path='manageFlights' element={<h1>manage flights</h1>}/>
-          <Route path='manageHotels' element={ <h1>manage hotels</h1> }/>
+          <Route path='manageHotels' element={ <HotelManage /> }/>
         </Routes>
       </BrowserRouter>
       

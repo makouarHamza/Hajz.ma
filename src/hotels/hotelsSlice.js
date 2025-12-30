@@ -25,6 +25,11 @@ export const deleteHotel = createAsyncThunk("hotels/deleteHotel", async (id) =>{
     return id
 })
 
+export const addHotel = createAsyncThunk("hotels/addHotel", async (addedHotel)=>{
+    const response = await axios.post(HOTEL_URL,addedHotel)
+    return response.data
+})
+
 const hotelsSlice = createSlice({
     name:'hotels',
     initialState,
@@ -45,6 +50,10 @@ const hotelsSlice = createSlice({
         .addCase(deleteHotel.fulfilled, (state, action) => {
             state.status = 'succeeded'
             state.hotels = state.hotels.filter(hotel => hotel.id !== action.payload);
+        })
+        .addCase(addHotel.fulfilled, (state, action) => {
+            state.status = 'succeeded'
+            state.hotels.push(action.payload)
         })
         
     }

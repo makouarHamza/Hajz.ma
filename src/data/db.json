@@ -1,69 +1,53 @@
 {
-    "hotels":[
-        {
-            "idHotel": "1313",
-            "nameHotel": "Farah Inn",
-            "description": "Situé à Ifrane dans la région moyen atlas...",
-            "city": "Ifrane",
-            "price": 230,
-            "rating": "2.2",
-            "images": ["ifraneHotel1.jpg","ifraneHotel2.jpg"],
-            "commentaires": ["trop loin du center ville", "l'accueil top"],
-            "amenities":["Piscine à débordement", "Vue montagne", "Restaurant Gastronomique"],
-            "like": 12,
-            "heart": 3
-        },
-        {
-            "idHotel": "1402",
-            "nameHotel": "Riad Dar Ziryab",
-            "description": "Un riad authentique au cœur de la médina de Fès, offrant une architecture traditionnelle et un jardin luxuriant.",
-            "city": "Fès",
-            "price": 850,
-            "rating": 4.8,
-            "images": ["fesRiad1.jpg", "fesRiad2.jpg", "fesRiad3.jpg"],
-            "commentaires": ["Le petit déjeuner est incroyable", "Magnifique décor traditionnel"],
-            "amenities": ["Spa", "Petit-déjeuner inclus", "Wifi gratuit"],
-            "like": 45,
-            "heart": 18
-        },
-        {
-            "idHotel": "1505",
-            "nameHotel": "Kasbah Tamadot",
-            "description": "Retraite de luxe située dans les montagnes de l'Atlas avec une vue imprenable sur les vallées environnantes.",
-            "city": "Asni",
-            "price": 4200,
-            "rating": 4.9,
-            "images": ["atlasLuxury1.jpg", "atlasLuxury2.jpg"],
-            "commentaires": ["Une expérience unique au monde", "Service irréprochable"],
-            "amenities": ["Piscine à débordement", "Vue montagne", "Restaurant Gastronomique"],
-            "like": 120,
-            "heart": 56
-        },
-        {
-            "idHotel": "1610",
-            "nameHotel": "Marina Bay",
-            "description": "Hôtel moderne face à la plage de Tanger, idéal pour les voyages d'affaires et de détente.",
-            "city": "Tanger",
-            "price": 950,
-            "rating": 4.0,
-            "images": ["tangerMarina1.jpg", "tangerMarina2.jpg"],
-            "commentaires": ["Vue sur mer magnifique", "Chambres un peu petites"],
-            "amenities": ["Face à la mer", "Bar", "Climatisation"],
-            "like": 28,
-            "heart": 9
-        },
-        {
-            "idHotel": "1722",
-            "nameHotel": "Le Jardin des Biehn",
-            "description": "Ancienne demeure d'été du Pacha, transformée en boutique-hôtel avec un jardin andalou sublime.",
-            "city": "Fès",
-            "price": 1200,
-            "rating": 4.7,
-            "images": ["fesJardin1.jpg", "fesJardin2.jpg"],
-            "commentaires": ["Un havre de paix", "Le personnel est aux petits soins"],
-            "amenities": ["Jardin", "Restaurant", "Bibliothèque"],
-            "like": 64,
-            "heart": 22
-        }
-    ]
+  "hotels": [
+    {
+      "idHotel": "1313",
+      "nameHotel": "Farah Inn",
+      "description": "Situé à Ifrane dans la région moyen atlas...",
+      "city": "Ifrane",
+      "price": 230,
+      "rating": "2.2",
+      "images": [
+        "ifraneHotel1.jpg",
+        "ifraneHotel2.jpg"
+      ],
+      "commentaires": [
+        "trop loin du center ville",
+        "l'accueil top"
+      ],
+      "amenities": [
+        "Piscine à débordement",
+        "Vue montagne",
+        "Restaurant Gastronomique"
+      ],
+      "like": 12,
+      "heart": 3,
+      "id": "e6fc"
+    },
+    {
+      "idHotel": "1402",
+      "nameHotel": "Riad Dar Ziryab",
+      "description": "Un riad authentique au cœur de la médina de Fès, offrant une architecture traditionnelle et un jardin luxuriant.",
+      "city": "Fès",
+      "price": 850,
+      "rating": 4.8,
+      "images": [
+        "fesRiad1.jpg",
+        "fesRiad2.jpg",
+        "fesRiad3.jpg"
+      ],
+      "commentaires": [
+        "Le petit déjeuner est incroyable",
+        "Magnifique décor traditionnel"
+      ],
+      "amenities": [
+        "Spa",
+        "Petit-déjeuner inclus",
+        "Wifi gratuit"
+      ],
+      "like": 45,
+      "heart": 18,
+      "id": "b9b8"
+    }
+  ]
 }

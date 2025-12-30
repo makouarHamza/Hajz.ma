@@ -19,6 +19,12 @@ export const getDataHotels = createAsyncThunk("hotels/getDataHotels",async ()=>{
     }
 })
 
+export const deleteHotel = createAsyncThunk("hotels/deleteHotel", async (id) =>{
+    console.log("Attempting to delete at:", `${HOTEL_URL}/${id}`);
+    const response = await axios.delete(`${HOTEL_URL}/${id}`);
+    return id
+})
+
 const hotelsSlice = createSlice({
     name:'hotels',
     initialState,
@@ -30,12 +36,17 @@ const hotelsSlice = createSlice({
         })
         .addCase(getDataHotels.fulfilled, (state, action) => {
             state.status = 'succeeded'
-            state.hotels = state.hotels.concat(action.payload)
+            state.hotels = action.payload;
         })
         .addCase(getDataHotels.rejected, (state, action) => {
             state.status = 'failed'
             state.error = action.error.message
         })
+        .addCase(deleteHotel.fulfilled, (state, action) => {
+            state.status = 'succeeded'
+            state.hotels = state.hotels.filter(hotel => hotel.id !== action.payload);
+        })
+        
     }
 })
 export default hotelsSlice.reducer

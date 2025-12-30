@@ -1,7 +1,7 @@
 import { PencilLine, Plus, Trash2 } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { allHotelsData, getDataHotels, hotelError, hotelStatus } from "./hotelsSlice";
+import { allHotelsData, deleteHotel, getDataHotels, hotelError, hotelStatus } from "./hotelsSlice";
 import { useEffect } from "react";
 
 function HotelManage(){
@@ -16,6 +16,13 @@ function HotelManage(){
         }
     },[dispatch])
 
+    const handlerDelete =(id)=>{
+        if(window.confirm('Are you sure you want to delete this hotel?')){
+            dispatch(deleteHotel(id))
+        }
+    
+    }
+
     let tabelContent = ''
     if(status === 'loading'){
         tabelContent = <tr><td colSpan={6}>loading...</td></tr>
@@ -25,14 +32,14 @@ function HotelManage(){
                 <td className="fw-medium text-secondary">{hotel.nameHotel}</td>
                 <td>{hotel.city}</td>
                 <td>{hotel.rating}</td>
-                <td className="fw-bold">${hotel.price}</td>
-                <td className="text-muted small"> {hotel.amenities.join(', ')}</td>
+                <td className="fw-bold">{hotel.price}</td>
+                <td className="text-muted small">{hotel.amenities.join(', ')}</td>
                 
                 <td className="text-end">
                     <button className="btn btn-outline-secondary btn-sm me-2 border-light-subtle">
                         <PencilLine size={16} className="text-dark" />
                     </button>
-                    <button className="btn btn-danger btn-sm">
+                    <button onClick={()=>handlerDelete(hotel.idHotel)} className="btn btn-danger btn-sm">
                         <Trash2 size={16} />
                     </button>
 
@@ -63,7 +70,7 @@ function HotelManage(){
                 <div className="table-responsive">
                     <table className="table align-middle table-hover">
                         <thead className="table-light">
-                            <tr>
+                            <tr key={12}>
                                 <th scope="col">Name</th>
                                 <th scope="col">Location</th>
                                 <th scope="col">Rating</th>
@@ -73,7 +80,28 @@ function HotelManage(){
                             </tr>
                         </thead>
                         <tbody>
-                            {tabelContent}   
+                            
+                            {
+                            hotelData.map((hotel, index) => 
+                                <tr key={index}>
+                                    <td className="fw-medium text-secondary">{hotel.nameHotel}</td>
+                                    <td>{hotel.city}</td>
+                                    <td>{hotel.rating}</td>
+                                    <td className="fw-bold">{hotel.price}</td>
+                                    <td className="text-muted small">{hotel.amenities.join(', ')}</td>
+                                    
+                                    <td className="text-end">
+                                        <button className="btn btn-outline-secondary btn-sm me-2 border-light-subtle">
+                                            <PencilLine size={16} className="text-dark" />
+                                        </button>
+                                        <button onClick={()=>handlerDelete(hotel.id)} className="btn btn-danger btn-sm">
+                                            <Trash2 size={16} />
+                                        </button>
+
+                                    </td>
+                                </tr>
+                                )
+                            }   
                         </tbody>
                     </table>
                 </div>

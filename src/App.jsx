@@ -9,6 +9,7 @@ import Footer from './layouts/footer';
 import ListHotels from './hotels/hotelsList';
 import HotelManage from './hotels/hotelmanage';
 import NewHotelForm from './hotels/newHotelForm';
+import AddFlightForm from './flights/newFlightForm';
 
 function App() {
   const [isAdmin,setIsAdmin] = useState(false);
@@ -79,7 +80,7 @@ function App() {
           <Route path='flights' element={<h1>flights</h1>}/>
           <Route path='hotels' element={ <ListHotels /> }/>
           <Route path='manageCars' element={<h1>manage Cars</h1>}/>
-          <Route path='manageFlights' element={<h1>manage flights</h1>}/>
+          <Route path='manageFlights' element={<AddFlightForm />}/>
           <Route path='manageHotels' element={ <HotelManage /> }/>
           <Route path='manageHotels/addEditHotel' element={ <NewHotelForm /> }/>
           <Route path='manageHotels/addEditHotel/:idToEdit' element={ <NewHotelForm /> }/>

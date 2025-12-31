@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { X } from 'lucide-react';
-import { useDispatch } from 'react-redux';
-import { addFlight } from './flightsSlice';
-import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { addFlight, editFlight, selectAllFlights } from './flightsSlice';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const AddFlightForm = () => {
   const [flightData, setFlightData] = useState({
@@ -21,6 +21,14 @@ const AddFlightForm = () => {
   });
   const dispatch = useDispatch()
   const navigate = useNavigate()
+  const { idToEdit } = useParams();
+
+  const existingFlight = useSelector(selectAllFlights).find(flight => flight.id === idToEdit);
+  useEffect(function(){
+    if(existingFlight){
+      setFlightData(existingFlight)
+    }
+  },[existingFlight, idToEdit])
 
   function onChangeAireLine(e){
     setFlightData({...flightData, airline:e.target.value})
@@ -58,6 +66,12 @@ const AddFlightForm = () => {
   function onChangePrice(e){
     setFlightData({...flightData, price:e.target.value})
   }
+
+  const hideForm = () => {
+      navigate(-1);
+      resetForm();
+  }  
+  
   const resetForm = () => {
     setFlightData({
         airline: '',
@@ -72,29 +86,30 @@ const AddFlightForm = () => {
         stops: '0',
         cabinClass: 'Economy',
         price: 0
-    })
+    })    
   }
 
   function handleSubmit(e){
     e.preventDefault();
-    console.log(flightData);
-    dispatch(addFlight(flightData));
-    alert("Flight added successfully!")
-    resetForm();
-    navigate("/")
-
-}
-    const hideForm = () => {
-        navigate(-1);
-        resetForm();
+    if(idToEdit){
+      dispatch(editFlight(flightData))
+      alert("Flight Edited successfully!")
+    }else{
+      dispatch(addFlight(flightData));
+      alert("Flight added successfully!")
     }
+    
+    resetForm();
+    navigate("/manageFlights")
+  }
+
 
   return (
     <div className="container mt-4 d-flex justify-content-center">
       <div className="card border-0 shadow-lg p-4" style={{ width: '100%', maxWidth: '550px', borderRadius: '12px' }}>
         {/* Header */}
         <div className="d-flex justify-content-between align-items-center mb-3">
-          <h5 className="fw-bold m-0">Add New Flight</h5>
+          <h5 className="fw-bold m-0">{idToEdit?"Edit Flight":"Add New Flight"}</h5>
           <button onClick={hideForm} className="btn btn-link text-muted p-0"><X size={20} /></button>
         </div>
 
@@ -103,11 +118,11 @@ const AddFlightForm = () => {
           <div className="row mb-4">
             <div className="col-md-6">
               <label className="form-label fw-bold small">Airline</label>
-              <input onChange={onChangeAireLine} type="text" className="form-control bg-light border-0 py-2" placeholder="e.g., Emirates" />
+              <input value={flightData.airline} onChange={onChangeAireLine} type="text" className="form-control bg-light border-0 py-2" placeholder="e.g., Emirates" />
             </div>
             <div className="col-md-6">
               <label className="form-label fw-bold small">Flight Number</label>
-              <input onChange={onChangeFlightNumber} type="text" className="form-control bg-light border-0 py-2" placeholder="e.g., EK205" />
+              <input value={flightData.flightNumber} onChange={onChangeFlightNumber} type="text" className="form-control bg-light border-0 py-2" placeholder="e.g., EK205" />
             </div>
           </div>
 
@@ -116,15 +131,15 @@ const AddFlightForm = () => {
           <div className="row mb-4">
             <div className="col-4">
               <label className="form-label text-muted small fw-bold">Time</label>
-              <input onChange={onChangeDepTime} type="text" className="form-control bg-light border-0 py-2" placeholder="08:00" />
+              <input value={flightData.depTime} onChange={onChangeDepTime} type="text" className="form-control bg-light border-0 py-2" placeholder="08:00" />
             </div>
             <div className="col-4">
               <label className="form-label text-muted small fw-bold">Airport Code</label>
-              <input onChange={onChangeDepAirport} type="text" className="form-control bg-light border-0 py-2" placeholder="JFK" />
+              <input value={flightData.depAirport} onChange={onChangeDepAirport} type="text" className="form-control bg-light border-0 py-2" placeholder="JFK" />
             </div>
             <div className="col-4">
               <label className="form-label text-muted small fw-bold">Date</label>
-              <input onChange={onChangeDepDate} type="text" className="form-control bg-light border-0 py-2" placeholder="Jan 15" />
+              <input value={flightData.depDate} onChange={onChangeDepDate} type="text" className="form-control bg-light border-0 py-2" placeholder="Jan 15" />
             </div>
           </div>
 
@@ -135,15 +150,15 @@ const AddFlightForm = () => {
           <div className="row mb-4">
             <div className="col-4">
               <label className="form-label text-muted small fw-bold">Time</label>
-              <input onChange={onChangeArrTime} type="text" className="form-control bg-light border-0 py-2" placeholder="20:30" />
+              <input value={flightData.arrTime} onChange={onChangeArrTime} type="text" className="form-control bg-light border-0 py-2" placeholder="20:30" />
             </div>
             <div className="col-4">
               <label className="form-label text-muted small fw-bold">Airport Code</label>
-              <input onChange={onChangeArrAirport} type="text" className="form-control bg-light border-0 py-2" placeholder="CDG" />
+              <input value={flightData.arrAirport} onChange={onChangeArrAirport} type="text" className="form-control bg-light border-0 py-2" placeholder="CDG" />
             </div>
             <div className="col-4">
               <label className="form-label text-muted small fw-bold">Date</label>
-              <input onChange={onChangeArrDate} type="text" className="form-control bg-light border-0 py-2" placeholder="Jan 15" />
+              <input value={flightData.arrDate} onChange={onChangeArrDate} type="text" className="form-control bg-light border-0 py-2" placeholder="Jan 15" />
             </div>
           </div>
 
@@ -151,15 +166,15 @@ const AddFlightForm = () => {
           <div className="row mb-4">
             <div className="col-4">
               <label className="form-label fw-bold small">Duration</label>
-              <input onChange={onChangeDuration} type="text" className="form-control bg-light border-0 py-2" placeholder="7h 30m" />
+              <input value={flightData.duration} onChange={onChangeDuration} type="text" className="form-control bg-light border-0 py-2" placeholder="7h 30m" />
             </div>
             <div className="col-4">
               <label className="form-label fw-bold small">Stops</label>
-              <input onChange={onChangeStops} type="number" className="form-control bg-light border-0 py-2" placeholder="0" />
+              <input value={flightData.stops} onChange={onChangeStops} type="number" className="form-control bg-light border-0 py-2" placeholder="0" />
             </div>
             <div className="col-4">
               <label className="form-label fw-bold small">Cabin Class</label>
-              <select onChange={onChangeCabinClass} className="form-select bg-light border-0 py-2 shadow-none">
+              <select value={flightData.cabinClass} onChange={onChangeCabinClass} className="form-select bg-light border-0 py-2 shadow-none">
                 <option>Economy</option>
                 <option>Business</option>
                 <option>First Class</option>
@@ -170,13 +185,13 @@ const AddFlightForm = () => {
           {/* Price Row */}
           <div className="mb-4">
             <label className="form-label fw-bold small">Price ($)</label>
-            <input onChange={onChangePrice} type="number" className="form-control bg-light border-0 py-2" placeholder="0" />
+            <input value={flightData.price} onChange={onChangePrice} type="number" className="form-control bg-light border-0 py-2" placeholder="0" />
           </div>
 
           {/* Actions */}
           <div className="d-flex gap-2">
             <button type="submit" className="btn btn-dark flex-grow-1 py-2 fw-bold" style={{ backgroundColor: '#0a0d14' }}>
-              Add Flight
+              {idToEdit?"Edit":"Add Flight"}
             </button>
             <button onClick={hideForm} type="button" className="btn btn-outline-secondary px-4 py-2 border-opacity-25">
               Cancel

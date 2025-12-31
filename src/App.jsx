@@ -87,6 +87,7 @@ function App() {
           <Route path='manageHotels/addEditHotel/:idToEdit' element={ <NewHotelForm /> }/>
           <Route path='manageFlights' element={<FlightsManage />}/>
           <Route path='manageFlights/addEditFlight' element={ <AddFlightForm /> }/> 
+          <Route path='manageFlights/addEditFlight/:idToEdit' element={ <AddFlightForm /> }/> 
           
         </Routes>
       </BrowserRouter>

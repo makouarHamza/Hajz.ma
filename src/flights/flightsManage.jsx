@@ -2,14 +2,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { deleteFlight, flightStatus, getDataFlights, selectAllFlights } from "./flightsSlice";
 import { PencilLine, Plus, Trash2 } from "lucide-react";
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 function FlightsManage() {
     const dispatch = useDispatch();
     const flights = useSelector(selectAllFlights);
     const status = useSelector(flightStatus)
     const navigate = useNavigate()
-
     useEffect(function(){
         if(status === 'idle'){
             dispatch(getDataFlights())
@@ -20,8 +19,7 @@ function FlightsManage() {
     const handlerDelete = (id) =>{
         if(window.confirm("Are you sure you want to delete this flight?")){
             dispatch(deleteFlight(id))
-        }
-        
+        } 
     }
 
 
@@ -81,7 +79,7 @@ function FlightsManage() {
                     
                 
                     <td className="pe-4 py-3 text-end">
-                        <button className="btn btn-light btn-sm border me-2 shadow-sm" style={{ padding: '6px 8px' }}>
+                        <button onClick={() => navigate(`addEditFlight/${flight.id}`)} className="btn btn-light btn-sm border me-2 shadow-sm" style={{ padding: '6px 8px' }}>
                         <PencilLine size={16} className="text-dark" />
                         </button>
                         <button onClick={() => handlerDelete(flight.id)} className="btn btn-danger btn-sm shadow-sm" style={{ padding: '6px 8px' }}>

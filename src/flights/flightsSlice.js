@@ -23,6 +23,11 @@ export const deleteFlight = createAsyncThunk("flights/deleteFlight", async(id) =
     return id
 })
 
+export const editFlight = createAsyncThunk("flights/editFlight", async(updatedFlight) => {
+    const response = await axios.put(`${FLIGHTS_URL}/${updatedFlight.id}`, updatedFlight);
+    return response.data
+})
+
 const flightsSlice = createSlice({
     name: 'flights',
     initialState,
@@ -47,6 +52,13 @@ const flightsSlice = createSlice({
         .addCase(deleteFlight.fulfilled, (state, action) => {
             state.status = 'succeeded'
             state.flights = state.flights.filter(flight => flight.id !== action.payload);
+        })
+        .addCase(editFlight.fulfilled, (state, action) => {
+            state.status = 'succeeded'
+            const indexToEdit = state.flights.findIndex(flight => flight.id === action.payload.id )
+            if(indexToEdit !== -1){
+                state.flights[indexToEdit] = action.payload
+            }
         })
     }
 

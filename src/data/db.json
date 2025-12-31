@@ -181,18 +181,18 @@
     },
     {
       "id": "9a03",
-      "airline": "Hamza Aire Line",
+      "airline": "Hamza Aire ",
       "flightNumber": "HMZ32",
       "depTime": "10:00",
-      "depAirport": "HNA",
-      "depDate": "DEC12",
-      "arrTime": "10:00",
-      "arrAirport": "HZX",
-      "arrDate": "DEC13",
-      "duration": "12h",
-      "stops": "1",
+      "depAirport": "hamza",
+      "depDate": "DEC10",
+      "arrTime": "20:00",
+      "arrAirport": "mk",
+      "arrDate": "DEC11",
+      "duration": "12:12h",
+      "stops": "2",
       "cabinClass": "First Class",
-      "price": "999"
+      "price": "333"
     }
   ]
 }

@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import { X } from 'lucide-react';
+import { useDispatch } from 'react-redux';
+import { addFlight } from './flightsSlice';
+import { useNavigate } from 'react-router-dom';
 
 const AddFlightForm = () => {
   const [flightData, setFlightData] = useState({
@@ -16,6 +19,8 @@ const AddFlightForm = () => {
     cabinClass: 'Economy',
     price: 0
   });
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   function onChangeAireLine(e){
     setFlightData({...flightData, airline:e.target.value})
@@ -57,7 +62,24 @@ const AddFlightForm = () => {
   function handleSubmit(e){
     e.preventDefault();
     console.log(flightData);
-    
+    dispatch(addFlight(flightData));
+    alert("fight added with successed")
+    setFlightData({
+        airline: '',
+        flightNumber: '',
+        depTime: '',
+        depAirport: '',
+        depDate: '',
+        arrTime: '',
+        arrAirport: '',
+        arrDate: '',
+        duration: '',
+        stops: '0',
+        cabinClass: 'Economy',
+        price: 0
+    })
+    navigate("/")
+
 }
 
   return (

@@ -133,6 +133,81 @@
       "heart": 0
     }
   ],
-  "flights":[
+  "flights": [
+    {
+      "id": "6d78",
+      "airline": "Air France",
+      "flightNumber": "AF1234",
+      "depTime": "08:00",
+      "depAirport": "JFK",
+      "depDate": "Jan 15",
+      "arrTime": "20:30",
+      "arrAirport": "CDG",
+      "arrDate": "Jan 15",
+      "duration": "7h 30m",
+      "stops": "0",
+      "cabinClass": "Economy",
+      "price": "600"
+    },
+    {
+      "id": "ceff",
+      "airline": "Air France",
+      "flightNumber": "AF1234",
+      "depTime": "08:00",
+      "depAirport": "JFK",
+      "depDate": "Jan 15",
+      "arrTime": "20:30",
+      "arrAirport": "CDG",
+      "arrDate": "Jan 15",
+      "duration": "7h 30m",
+      "stops": "0",
+      "cabinClass": "Economy",
+      "price": "600"
+    },
+    {
+      "id": "bbec",
+      "airline": "Air France",
+      "flightNumber": "AF1234",
+      "depTime": "08:00",
+      "depAirport": "JFK",
+      "depDate": "Jan 15",
+      "arrTime": "20:30",
+      "arrAirport": "CDG",
+      "arrDate": "Jan 15",
+      "duration": "7h 30m",
+      "stops": "0",
+      "cabinClass": "Economy",
+      "price": "600"
+    },
+    {
+      "id": "6d5e",
+      "airline": "Air France",
+      "flightNumber": "AF1234",
+      "depTime": "08:00",
+      "depAirport": "JFK",
+      "depDate": "Jan 15",
+      "arrTime": "20:30",
+      "arrAirport": "CDG",
+      "arrDate": "Jan 15",
+      "duration": "7h 30m",
+      "stops": "0",
+      "cabinClass": "Economy",
+      "price": "600"
+    },
+    {
+      "id": "8940",
+      "airline": "Emirates",
+      "flightNumber": "WQ435",
+      "depTime": "05:55",
+      "depAirport": "SDF",
+      "depDate": "Jan 23",
+      "arrTime": "19:21",
+      "arrAirport": "SDW",
+      "arrDate": "Jan 23",
+      "duration": "5h 23M",
+      "stops": "1",
+      "cabinClass": "First Class",
+      "price": "560"
+    }
   ]
 }

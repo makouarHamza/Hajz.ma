@@ -10,6 +10,7 @@ import ListHotels from './hotels/hotelsList';
 import HotelManage from './hotels/hotelmanage';
 import NewHotelForm from './hotels/newHotelForm';
 import AddFlightForm from './flights/newFlightForm';
+import FlightsManage from './flights/flightsManage';
 
 function App() {
   const [isAdmin,setIsAdmin] = useState(false);
@@ -80,10 +81,12 @@ function App() {
           <Route path='flights' element={<h1>flights</h1>}/>
           <Route path='hotels' element={ <ListHotels /> }/>
           <Route path='manageCars' element={<h1>manage Cars</h1>}/>
-          <Route path='manageFlights' element={<AddFlightForm />}/>
           <Route path='manageHotels' element={ <HotelManage /> }/>
           <Route path='manageHotels/addEditHotel' element={ <NewHotelForm /> }/>
           <Route path='manageHotels/addEditHotel/:idToEdit' element={ <NewHotelForm /> }/>
+          <Route path='manageFlights' element={<FlightsManage />}/>
+          <Route path='manageFlights/addFlight' element={ <AddFlightForm /> }/> 
+          
         </Routes>
       </BrowserRouter>
       

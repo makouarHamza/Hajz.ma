@@ -29,6 +29,7 @@ const flightsSlice = createSlice({
         })
         .addCase(getDataFlights.fulfilled, (state, action) => {
             state.status = 'succeeded'
+            state.flights = action.payload
         })
         .addCase(getDataFlights.rejected, (state, action) => {
             state.error = action.error.message
@@ -42,3 +43,6 @@ const flightsSlice = createSlice({
 
 })
 export default flightsSlice.reducer;
+export const selectAllFlights = (state) => state.flights.flights;
+export const flightStatus = (state) => state.flights.status;
+export const flightError = (state) => state.flights.error;

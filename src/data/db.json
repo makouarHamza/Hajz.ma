@@ -208,6 +208,21 @@
       "stops": "1",
       "cabinClass": "First Class",
       "price": "560"
+    },
+    {
+      "id": "760c",
+      "airline": "",
+      "flightNumber": "",
+      "depTime": "",
+      "depAirport": "",
+      "depDate": "",
+      "arrTime": "",
+      "arrAirport": "",
+      "arrDate": "",
+      "duration": "",
+      "stops": "0",
+      "cabinClass": "Economy",
+      "price": 0
     }
   ]
 }

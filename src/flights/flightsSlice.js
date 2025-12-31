@@ -24,6 +24,16 @@ const flightsSlice = createSlice({
     reducers: {},
     extraReducers(builder) {
         builder
+        .addCase(getDataFlights.pending, (state, action) => {
+            state.status = 'loading'
+        })
+        .addCase(getDataFlights.fulfilled, (state, action) => {
+            state.status = 'succeeded'
+        })
+        .addCase(getDataFlights.rejected, (state, action) => {
+            state.error = action.error.message
+        })
+
         .addCase(addFlight.fulfilled, (state, action) => {
             state.status = 'succeeded'
             state.flights.push(action.payload)

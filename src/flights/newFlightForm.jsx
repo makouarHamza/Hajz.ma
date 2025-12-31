@@ -63,7 +63,7 @@ const AddFlightForm = () => {
     e.preventDefault();
     console.log(flightData);
     dispatch(addFlight(flightData));
-    alert("fight added with successed")
+    alert("Flight added successfully!")
     setFlightData({
         airline: '',
         flightNumber: '',

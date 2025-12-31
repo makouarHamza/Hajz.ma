@@ -150,37 +150,7 @@
       "price": "600"
     },
     {
-      "id": "ceff",
-      "airline": "Air France",
-      "flightNumber": "AF1234",
-      "depTime": "08:00",
-      "depAirport": "JFK",
-      "depDate": "Jan 15",
-      "arrTime": "20:30",
-      "arrAirport": "CDG",
-      "arrDate": "Jan 15",
-      "duration": "7h 30m",
-      "stops": "0",
-      "cabinClass": "Economy",
-      "price": "600"
-    },
-    {
       "id": "bbec",
-      "airline": "Air France",
-      "flightNumber": "AF1234",
-      "depTime": "08:00",
-      "depAirport": "JFK",
-      "depDate": "Jan 15",
-      "arrTime": "20:30",
-      "arrAirport": "CDG",
-      "arrDate": "Jan 15",
-      "duration": "7h 30m",
-      "stops": "0",
-      "cabinClass": "Economy",
-      "price": "600"
-    },
-    {
-      "id": "6d5e",
       "airline": "Air France",
       "flightNumber": "AF1234",
       "depTime": "08:00",
@@ -210,19 +180,19 @@
       "price": "560"
     },
     {
-      "id": "760c",
-      "airline": "",
-      "flightNumber": "",
-      "depTime": "",
-      "depAirport": "",
-      "depDate": "",
-      "arrTime": "",
-      "arrAirport": "",
-      "arrDate": "",
-      "duration": "",
-      "stops": "0",
-      "cabinClass": "Economy",
-      "price": 0
+      "id": "9a03",
+      "airline": "Hamza Aire Line",
+      "flightNumber": "HMZ32",
+      "depTime": "10:00",
+      "depAirport": "HNA",
+      "depDate": "DEC12",
+      "arrTime": "10:00",
+      "arrAirport": "HZX",
+      "arrDate": "DEC13",
+      "duration": "12h",
+      "stops": "1",
+      "cabinClass": "First Class",
+      "price": "999"
     }
   ]
 }

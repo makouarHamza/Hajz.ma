@@ -58,12 +58,7 @@ const AddFlightForm = () => {
   function onChangePrice(e){
     setFlightData({...flightData, price:e.target.value})
   }
-
-  function handleSubmit(e){
-    e.preventDefault();
-    console.log(flightData);
-    dispatch(addFlight(flightData));
-    alert("Flight added successfully!")
+  const resetForm = () => {
     setFlightData({
         airline: '',
         flightNumber: '',
@@ -78,9 +73,21 @@ const AddFlightForm = () => {
         cabinClass: 'Economy',
         price: 0
     })
+  }
+
+  function handleSubmit(e){
+    e.preventDefault();
+    console.log(flightData);
+    dispatch(addFlight(flightData));
+    alert("Flight added successfully!")
+    resetForm();
     navigate("/")
 
 }
+    const hideForm = () => {
+        navigate(-1);
+        resetForm();
+    }
 
   return (
     <div className="container mt-4 d-flex justify-content-center">
@@ -88,7 +95,7 @@ const AddFlightForm = () => {
         {/* Header */}
         <div className="d-flex justify-content-between align-items-center mb-3">
           <h5 className="fw-bold m-0">Add New Flight</h5>
-          <button className="btn btn-link text-muted p-0"><X size={20} /></button>
+          <button onClick={hideForm} className="btn btn-link text-muted p-0"><X size={20} /></button>
         </div>
 
         <form onSubmit={handleSubmit}>
@@ -171,7 +178,7 @@ const AddFlightForm = () => {
             <button type="submit" className="btn btn-dark flex-grow-1 py-2 fw-bold" style={{ backgroundColor: '#0a0d14' }}>
               Add Flight
             </button>
-            <button type="button" className="btn btn-outline-secondary px-4 py-2 border-opacity-25">
+            <button onClick={hideForm} type="button" className="btn btn-outline-secondary px-4 py-2 border-opacity-25">
               Cancel
             </button>
           </div>

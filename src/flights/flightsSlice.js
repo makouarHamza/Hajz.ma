@@ -18,6 +18,11 @@ export const addFlight = createAsyncThunk("flights/addFlight", async (addedFligh
     return response.data
 })
 
+export const deleteFlight = createAsyncThunk("flights/deleteFlight", async(id) => {
+    const response = await axios.delete(`${FLIGHTS_URL}/${id}`);
+    return id
+})
+
 const flightsSlice = createSlice({
     name: 'flights',
     initialState,
@@ -38,6 +43,10 @@ const flightsSlice = createSlice({
         .addCase(addFlight.fulfilled, (state, action) => {
             state.status = 'succeeded'
             state.flights.push(action.payload)
+        })
+        .addCase(deleteFlight.fulfilled, (state, action) => {
+            state.status = 'succeeded'
+            state.flights = state.flights.filter(flight => flight.id !== action.payload);
         })
     }
 

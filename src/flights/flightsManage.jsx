@@ -1,12 +1,14 @@
 import { useDispatch, useSelector } from "react-redux";
-import { flightStatus, getDataFlights, selectAllFlights } from "./flightsSlice";
+import { deleteFlight, flightStatus, getDataFlights, selectAllFlights } from "./flightsSlice";
 import { PencilLine, Plus, Trash2 } from "lucide-react";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 function FlightsManage() {
     const dispatch = useDispatch();
     const flights = useSelector(selectAllFlights);
     const status = useSelector(flightStatus)
+    const navigate = useNavigate()
 
     useEffect(function(){
         if(status === 'idle'){
@@ -14,6 +16,15 @@ function FlightsManage() {
         }
         
     },[dispatch, status])
+
+    const handlerDelete = (id) =>{
+        if(window.confirm("Are you sure you want to delete this flight?")){
+            dispatch(deleteFlight(id))
+        }
+        
+    }
+
+
     
 
     return(
@@ -22,12 +33,12 @@ function FlightsManage() {
         
         <div className="d-flex justify-content-between align-items-center mb-4">
             <h4 className="fw-bold m-0">Manage Flights</h4>
-            <button className="btn btn-dark d-flex align-items-center gap-2 px-3 py-2 rounded-3 shadow-sm">
+            <button onClick={() => navigate("addEditFlight")} className="btn btn-dark d-flex align-items-center gap-2 px-3 py-2 rounded-3 shadow-sm">
             <Plus size={18} /> Add Flight
             </button>
         </div>
 
-        {/* Table Card */}
+        
         <div className="card border-0 shadow-sm overflow-hidden" style={{ borderRadius: '12px' }}>
             <div className="table-responsive">
             <table className="table align-middle mb-0">
@@ -73,7 +84,7 @@ function FlightsManage() {
                         <button className="btn btn-light btn-sm border me-2 shadow-sm" style={{ padding: '6px 8px' }}>
                         <PencilLine size={16} className="text-dark" />
                         </button>
-                        <button className="btn btn-danger btn-sm shadow-sm" style={{ padding: '6px 8px' }}>
+                        <button onClick={() => handlerDelete(flight.id)} className="btn btn-danger btn-sm shadow-sm" style={{ padding: '6px 8px' }}>
                         <Trash2 size={16} />
                         </button>
                     </td>

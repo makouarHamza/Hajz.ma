@@ -1,13 +1,14 @@
 import { X } from "lucide-react"
 import { useEffect, useState } from "react"
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { useNavigate, useParams } from "react-router-dom"
-import { allHotelsData } from "./hotelsSlice"
+import { addHotel, allHotelsData, editHotel } from "./hotelsSlice"
 
 function NewHotelForm(){
     const navigate = useNavigate()
     const { idToEdit } =useParams()
     const hotelData = useSelector(allHotelsData);
+    const dispatch = useDispatch();
     const [objHotel, setObjHotel] = useState({
                                     idHotel: "",
                                     nameHotel: "",
@@ -26,7 +27,7 @@ function NewHotelForm(){
         setObjHotel({...objHotel, nameHotel:e.target.value})
     }
     const onChangeImages =(e) => {
-        setObjHotel({...objHotel, images:e.target.value.split(",")})
+        setObjHotel({...objHotel, images:e.target.value})
     }
     const onChangeLocation =(e) => {
         setObjHotel({...objHotel, city:e.target.value})
@@ -41,7 +42,7 @@ function NewHotelForm(){
         setObjHotel({...objHotel, rating:e.target.value})
     }
     const onChangeAmenities =(e) => {
-        setObjHotel({...objHotel, amenities:e.target.value.split(",")})  
+        setObjHotel({...objHotel, amenities:e.target.value})  
     }
     
     const existingHotel = hotelData.find(hotel => hotel.id === idToEdit);
@@ -53,10 +54,10 @@ function NewHotelForm(){
             amenities: Array.isArray(existingHotel.amenities) 
                 ? existingHotel.amenities.join(', ') 
                 : existingHotel.amenities,
-            images: Array.isArray(existingHotel.images
+            images: Array.isArray(existingHotel.images)
                 ? existingHotel.images.join(',')
                 : existingHotel.images
-            )    
+            
         };
         setObjHotel(formFriendlyData);
         }
@@ -75,7 +76,30 @@ function NewHotelForm(){
     }
     const handlerAddedHotel = (e) => {
         e.preventDefault();
-        console.log(objHotel);
+        const finalImages = objHotel.images.split(",").map(img => img.trim());
+        const finalAmenities = objHotel.amenities.split(",").map(am => am.trim());
+        const formFriendlyData = {
+            ...objHotel,
+            images: finalImages,
+            amenities: finalAmenities
+
+        }
+        if(idToEdit){
+
+            dispatch(editHotel(formFriendlyData))
+
+        }else{
+            if(objHotel.city && objHotel.description){
+                
+                dispatch(addHotel(formFriendlyData)) 
+            }
+            else{
+                alert("all field required")
+            }
+        }
+        console.log(formFriendlyData);
+        navigate("/manageHotels")
+
     }
 
     const resetform = () => {
@@ -88,8 +112,7 @@ function NewHotelForm(){
                                         like: 0,
                                         heart: 0,
                                     })
-    }
-
+        }
     }
 
 

@@ -6,7 +6,7 @@
       "description": "Situé à Ifrane dans la région moyen atlas...",
       "city": "Ifrane",
       "price": 230,
-      "rating": "2.2",
+      "rating": 5,
       "images": [
         "ifraneHotel1.jpg",
         "ifraneHotel2.jpg"
@@ -48,6 +48,89 @@
       "like": 45,
       "heart": 18,
       "id": "b9b8"
+    },
+    {
+      "id": "f4b9",
+      "idHotel": "",
+      "nameHotel": "hotel hamza",
+      "description": "hotel hamza test 123",
+      "city": "fez",
+      "price": "1200",
+      "rating": "5",
+      "images": [
+        "ifraneHotel1.jpg",
+        " ifraneHotel2.jpg"
+      ],
+      "commentaires": [],
+      "amenities": [
+        "wifi",
+        " cofee",
+        " Mint thee"
+      ],
+      "like": 0,
+      "heart": 0
+    },
+    {
+      "id": "3477",
+      "idHotel": "",
+      "nameHotel": "best 2",
+      "description": "tha one is",
+      "city": "fes",
+      "price": "246",
+      "rating": "4.6",
+      "images": [
+        "wifi",
+        "cofee",
+        "Mint thee"
+      ],
+      "commentaires": [],
+      "amenities": [
+        "best2.jpg",
+        "best3.jpeg"
+      ],
+      "like": 0,
+      "heart": 0
+    },
+    {
+      "id": "fa6e",
+      "idHotel": "",
+      "nameHotel": "asdefrtg",
+      "description": "asdfghjkl;'",
+      "city": "FES",
+      "price": "66763",
+      "rating": "1.2",
+      "images": [
+        "wifi",
+        "dsd",
+        "dsds"
+      ],
+      "commentaires": [],
+      "amenities": [
+        "ifraneHotel1.jpg",
+        "ifraneHotel2.jpg"
+      ],
+      "like": 0,
+      "heart": 0
+    },
+    {
+      "id": "a737",
+      "idHotel": "",
+      "nameHotel": "palais de fes",
+      "description": "palaia des fes amazig view",
+      "city": "fes",
+      "price": "232",
+      "rating": "3.9",
+      "images": [
+        "palaisdeFes1.jpg",
+        "palaisdeFes2.jpg"
+      ],
+      "commentaires": [],
+      "amenities": [
+        "wifi",
+        "cofee"
+      ],
+      "like": 0,
+      "heart": 0
     }
   ]
 }

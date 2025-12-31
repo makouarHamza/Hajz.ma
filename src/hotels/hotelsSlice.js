@@ -30,6 +30,11 @@ export const addHotel = createAsyncThunk("hotels/addHotel", async (addedHotel)=>
     return response.data
 })
 
+export const editHotel = createAsyncThunk("hotel/editHotel", async (editedHotel) => {
+    const response = await axios.put(`${HOTEL_URL}/${editedHotel.id}`, editedHotel);
+    return response.data;
+})
+
 const hotelsSlice = createSlice({
     name:'hotels',
     initialState,
@@ -55,6 +60,17 @@ const hotelsSlice = createSlice({
             state.status = 'succeeded'
             state.hotels.push(action.payload)
         })
+        .addCase(editHotel.fulfilled, (state, action) => {
+            state.status = 'succeeded';
+    
+            // Find the index of the hotel being updated
+            const indexToEdit = state.hotels.findIndex(hotel => hotel.id === action.payload.id);
+            
+            if (indexToEdit !== -1) {
+                // Correct way: Replace the item at that index with the new data
+                state.hotels[indexToEdit] = action.payload;
+            }
+        });
         
     }
 })

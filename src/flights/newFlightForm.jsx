@@ -91,6 +91,16 @@ const AddFlightForm = () => {
 
   function handleSubmit(e){
     e.preventDefault();
+    if(flightData.airline.trim().length ==0 ||
+      flightData.arrDate.trim().length ==0 ||
+      flightData.depTime.trim().length ==0 ||
+      flightData.depAirport.trim().length ==0 ||
+      flightData.arrAirport.trim().length ==0 ||
+      flightData.stops.trim().length ==0
+      ){
+      alert("all field required")
+      return
+    }
     if(idToEdit){
       dispatch(editFlight(flightData))
       alert("Flight Edited successfully!")
@@ -98,7 +108,6 @@ const AddFlightForm = () => {
       dispatch(addFlight(flightData));
       alert("Flight added successfully!")
     }
-    
     resetForm();
     navigate("/manageFlights")
   }

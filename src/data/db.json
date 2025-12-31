@@ -135,21 +135,6 @@
   ],
   "flights": [
     {
-      "id": "6d78",
-      "airline": "Air France",
-      "flightNumber": "AF1234",
-      "depTime": "08:00",
-      "depAirport": "JFK",
-      "depDate": "Jan 15",
-      "arrTime": "20:30",
-      "arrAirport": "CDG",
-      "arrDate": "Jan 15",
-      "duration": "7h 30m",
-      "stops": "0",
-      "cabinClass": "Economy",
-      "price": "600"
-    },
-    {
       "id": "bbec",
       "airline": "Air France",
       "flightNumber": "AF1234",
@@ -193,6 +178,21 @@
       "stops": "2",
       "cabinClass": "First Class",
       "price": "333"
+    },
+    {
+      "id": "b6de",
+      "airline": "Mohammed Aire",
+      "flightNumber": " mdml22",
+      "depTime": " 32",
+      "depAirport": " lkl2",
+      "depDate": " 23",
+      "arrTime": " 32kl;",
+      "arrAirport": "lklk32 ",
+      "arrDate": " 32l",
+      "duration": "23 ",
+      "stops": "0",
+      "cabinClass": "First Class",
+      "price": "599"
     }
   ]
 }

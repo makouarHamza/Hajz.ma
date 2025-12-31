@@ -13,6 +13,7 @@ import AddFlightForm from './flights/newFlightForm';
 import FlightsManage from './flights/flightsManage';
 import FlightsList from './flights/flightList';
 import NotFoundPage from './pages/NotFoundPage';
+import Home from './pages/Home';
 
 function App() {
   const [isAdmin,setIsAdmin] = useState(false);
@@ -78,7 +79,7 @@ function App() {
           </div>
         </div>
         <Routes>
-          <Route path='/' element={<h1>welcome</h1>}/>
+          <Route path='/' element={<Home />}/>
           <Route path='cars' element={<h1>cars</h1>}/>
           <Route path='flights' element={<FlightsList/>}/>
           <Route path='hotels' element={ <ListHotels /> }/>

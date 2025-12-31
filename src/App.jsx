@@ -12,6 +12,7 @@ import NewHotelForm from './hotels/newHotelForm';
 import AddFlightForm from './flights/newFlightForm';
 import FlightsManage from './flights/flightsManage';
 import FlightsList from './flights/flightList';
+import NotFoundPage from './pages/NotFoundPage';
 
 function App() {
   const [isAdmin,setIsAdmin] = useState(false);
@@ -88,6 +89,7 @@ function App() {
           <Route path='manageFlights' element={<FlightsManage />}/>
           <Route path='manageFlights/addEditFlight' element={ <AddFlightForm /> }/> 
           <Route path='manageFlights/addEditFlight/:idToEdit' element={ <AddFlightForm /> }/> 
+          <Route path='*' element={<NotFoundPage />}/>
           
         </Routes>
       </BrowserRouter>

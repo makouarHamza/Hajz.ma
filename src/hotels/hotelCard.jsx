@@ -1,6 +1,8 @@
 import { Coffee, MapPin, Star, Wifi, Wind } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 function HotelCard({dataHotel}){
+    const navigate = useNavigate();
     return(
         <>
         <div className="card mb-4 overflow-hidden shadow-sm" style={{borderRadius:'12px'}}>
@@ -52,8 +54,8 @@ function HotelCard({dataHotel}){
                                 <h3 className="fw-bold mb-0">${dataHotel.price}</h3>
                                 <p className="text-muted mb-0 small">per noght</p>
                             </div>
-                            <button className="btn btn-dark btn-lg px-4 fw-bold" style={{ borderRadius: '8px'}}>
-                                Book Now
+                            <button onClick={() => navigate(`/hotels/${dataHotel.id}`)} className="btn btn-dark btn-lg px-4 fw-bold" style={{ borderRadius: '8px'}}>
+                                Details
                             </button>
                         </div>
                         

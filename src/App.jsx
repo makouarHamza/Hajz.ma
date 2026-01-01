@@ -14,6 +14,7 @@ import FlightsManage from './flights/flightsManage';
 import FlightsList from './flights/flightList';
 import NotFoundPage from './pages/NotFoundPage';
 import Home from './pages/Home';
+import HotelDetails from './hotels/hotelDetails';
 
 function App() {
   const [isAdmin,setIsAdmin] = useState(false);
@@ -87,6 +88,7 @@ function App() {
           <Route path='manageHotels' element={ <HotelManage /> }/>
           <Route path='manageHotels/addEditHotel' element={ <NewHotelForm /> }/>
           <Route path='manageHotels/addEditHotel/:idToEdit' element={ <NewHotelForm /> }/>
+          <Route path='hotels/:idDetailHotel' element={ <HotelDetails /> }/>
           <Route path='manageFlights' element={<FlightsManage />}/>
           <Route path='manageFlights/addEditFlight' element={ <AddFlightForm /> }/> 
           <Route path='manageFlights/addEditFlight/:idToEdit' element={ <AddFlightForm /> }/> 

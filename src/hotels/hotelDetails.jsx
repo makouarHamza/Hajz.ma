@@ -2,7 +2,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom"
 import { addCommentToHotel, allHotelsData, heartHotel, thumbsUpHotel } from "./hotelsSlice";
 import { CheckCircle2, Coffee, Heart, MapPin, MessageSquare, Send, Star, ThumbsUp, Wifi, Wind, Wine } from "lucide-react";
-import { use, useState } from "react";
+import { useState } from "react";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
 function HotelDetails() {
     const { idDetailHotel } = useParams();
@@ -44,12 +51,27 @@ function HotelDetails() {
                 <div className="row g-0">
                     {/* Image Section */}
                     <div className="col-md-5">
-                        <img
-                            src={"/assets/imgHotels/" + existingHotel.images[0]}
-                            className="img-fluid h-100 w-100"
-                            alt={existingHotel.nameHotel}
-                            style={{ objectFit: 'cover', minHeight: '350px' }}
-                        />
+                       
+                        <Swiper 
+                            modules={[Navigation, Pagination, Autoplay]}
+                            spaceBetween={0}
+                            slidesPerView={1}
+                            navigation
+                            pagination={{ clickable: true }}
+                            autoplay={{ delay: 3000 }}
+                            style={{ height: '100%', width:"100%" }}
+                        >
+                            {existingHotel.images.map((image, index) => 
+                                <SwiperSlide key={index} >
+                                    <img
+                                        src={"/assets/imgHotels/" + image}
+                                        className="img-fluid h-100 w-100"
+                                        alt={existingHotel.nameHotel}
+                                    />
+                                </SwiperSlide>
+                            )}
+                        </Swiper>
+
                     </div>
 
                     {/* Content Section */}

@@ -9,6 +9,7 @@
       "rating": 5,
       "images": [
         "ifraneHotel1.jpg",
+        "ifraneHotel2.jpg",
         "ifraneHotel2.jpg"
       ],
       "commentaires": [
@@ -22,8 +23,8 @@
         "Vue montagne",
         "Restaurant Gastronomique"
       ],
-      "like": 15,
-      "heart": 5,
+      "like": 16,
+      "heart": 6,
       "id": "e6fc"
     },
     {
@@ -36,7 +37,8 @@
       "images": [
         "fesRiad1.jpg",
         "fesRiad2.jpg",
-        "fesRiad3.jpg"
+        "fesRiad3.jpg",
+        "ifraneHotel2.jpg"
       ],
       "commentaires": [
         "Le petit déjeuner est incroyable",
@@ -48,8 +50,8 @@
         "Petit-déjeuner inclus",
         "Wifi gratuit"
       ],
-      "like": 45,
-      "heart": 19,
+      "like": 48,
+      "heart": 21,
       "id": "b9b8"
     },
     {
@@ -61,18 +63,21 @@
       "price": "232",
       "rating": "3.9",
       "images": [
-        "tangerMarina1.jpg",
-        "palaisdeFes2.jpg"
+        "palaisdeFes2.jpg",
+        "palaisdeFes1.jpg",
+        "palaisdeFes3.jpg"
       ],
       "commentaires": [
-        "i visit palaise de fes s very nice"
+        "i visit palaise de fes s very nice",
+        "palais de fes i like it\n///",
+        "<h1>i love it</h1>"
       ],
       "amenities": [
         "wifi",
         "cofee"
       ],
-      "like": 2,
-      "heart": 0
+      "like": 3,
+      "heart": 1
     }
   ],
   "flights": [

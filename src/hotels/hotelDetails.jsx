@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom"
-import { addCommentToHotel, allHotelsData } from "./hotelsSlice";
+import { addCommentToHotel, allHotelsData, heartHotel, thumbsUpHotel } from "./hotelsSlice";
 import { CheckCircle2, Coffee, Heart, MapPin, MessageSquare, Send, Star, ThumbsUp, Wifi, Wind, Wine } from "lucide-react";
 import { use, useState } from "react";
 
@@ -21,6 +21,16 @@ function HotelDetails() {
             setComment("");
             dispatch(addCommentToHotel({comment: comment.trim(), existingHotel: existingHotel}));
         }
+    }
+
+    const handlerThumbsUp = () => {
+        alert("You liked this hotel!");
+        dispatch(thumbsUpHotel(existingHotel))
+    }
+
+    const handlerHeart = () => {
+        alert("You added this hotel to your favorites!");
+        dispatch(heartHotel(existingHotel))
     }
 
     if(!existingHotel){
@@ -59,10 +69,10 @@ function HotelDetails() {
                                         <span className="ms-1 fs-5 fw-bold text-dark">{existingHotel.rating}</span>
                                     </div>
                                     <div className="d-flex gap-3 mt-2 justify-content-end">
-                                        <span className="small text-primary d-flex align-items-center">
+                                        <span onClick={handlerThumbsUp} className="small text-primary d-flex align-items-center">
                                             <ThumbsUp size={14} className="me-1"/> {existingHotel.like}
                                         </span>
-                                        <span className="small text-danger d-flex align-items-center">
+                                        <span onClick={handlerHeart} className="small text-danger d-flex align-items-center">
                                             <Heart size={14} className="me-1" fill="red"/> {existingHotel.heart}
                                         </span>
                                     </div>

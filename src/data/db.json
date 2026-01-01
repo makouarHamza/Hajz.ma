@@ -22,8 +22,8 @@
         "Vue montagne",
         "Restaurant Gastronomique"
       ],
-      "like": 12,
-      "heart": 3,
+      "like": 15,
+      "heart": 5,
       "id": "e6fc"
     },
     {
@@ -40,6 +40,7 @@
       ],
       "commentaires": [
         "Le petit déjeuner est incroyable",
+        "Magnifique décor traditionnel",
         "Magnifique décor traditionnel"
       ],
       "amenities": [
@@ -48,7 +49,7 @@
         "Wifi gratuit"
       ],
       "like": 45,
-      "heart": 18,
+      "heart": 19,
       "id": "b9b8"
     },
     {
@@ -63,12 +64,14 @@
         "tangerMarina1.jpg",
         "palaisdeFes2.jpg"
       ],
-      "commentaires": [],
+      "commentaires": [
+        "i visit palaise de fes s very nice"
+      ],
       "amenities": [
         "wifi",
         "cofee"
       ],
-      "like": 0,
+      "like": 2,
       "heart": 0
     }
   ],

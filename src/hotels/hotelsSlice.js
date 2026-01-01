@@ -41,6 +41,18 @@ export const addCommentToHotel = createAsyncThunk("hotels/addCommentToHotel", as
     return response.data;
 })
 
+export const thumbsUpHotel = createAsyncThunk("hotels/thumbsUpHotel", async (hotel) => {
+    const updatedLike = hotel.like + 1;
+    const response = await axios.patch(`${HOTEL_URL}/${hotel.id}`,{like: updatedLike});
+    return response.data;
+})
+
+export const heartHotel = createAsyncThunk("hotels/heartHotel", async (hotel) => {
+    const updatedFavorite = hotel.heart + 1;
+    const response = await axios.patch(`${HOTEL_URL}/${hotel.id}`,{heart: updatedFavorite});
+    return response.data;
+})
+
 const hotelsSlice = createSlice({
     name:'hotels',
     initialState,
@@ -81,6 +93,20 @@ const hotelsSlice = createSlice({
             state.status = 'succeeded';
             const indexToEdit = state.hotels.findIndex(hotel => hotel.id === action.payload.id);
             if (indexToEdit !== -1) {
+                state.hotels[indexToEdit] = action.payload;
+            }
+        })
+        .addCase(thumbsUpHotel.fulfilled, (state, action) => {
+            state.status = 'succeeded';
+            const indexToEdit = state.hotels.findIndex(hotel => hotel.id === action.payload.id);
+            if (indexToEdit !== -1) {
+                state.hotels[indexToEdit] = action.payload;
+            }
+        })
+        .addCase(heartHotel.fulfilled, (state, action) => {
+            state.status = 'succeeded';
+            const indexToEdit = state.hotels.findIndex(hotel => hotel.id === action.payload.id);
+            if(indexToEdit !== -1) {
                 state.hotels[indexToEdit] = action.payload;
             }
         })

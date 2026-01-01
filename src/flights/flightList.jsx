@@ -39,6 +39,11 @@ function FlightsList() {
         
 
     }
+
+    const handlerSearch = (e) => {
+      setAirLine(e.target.value)
+        setFilteredFlights(flightsData.filter((flight) => flight.airline.trim().toLowerCase().includes(e.target.value.trim().toLowerCase())))
+    }
     const handlerReset = () => {
         setAirLine("")
         setFilteredFlights([])
@@ -60,13 +65,16 @@ function FlightsList() {
                 className="form-control border-start-0"
                 placeholder="search with air Line"
                 value={airLine}
-                onChange={(e) => setAirLine(e.target.value)}
+                onChange={handlerSearch}
                 required
               />
             </div>
           </div>
         </div>
         <div className="mt-4">
+            {filteredFlights.length === 0 && airLine.length > 0 ? <div>
+              <p className='alert alert-danger'>No Flight available with Air Line : {airLine}</p>
+            </div> :""}
           <button type="submit" className="btn btn-primary px-4">
             Search Hotels
           </button>

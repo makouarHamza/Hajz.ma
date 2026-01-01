@@ -21,8 +21,15 @@ const ListHotels= () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        setFiltredList(hotelData.filter((hotel)=>hotel.city.trim().toLowerCase().includes(destination.trim().toLowerCase())));
+        if(status === 'succeeded'){
+          setFiltredList(hotelData.filter((hotel)=>hotel.city.trim().toLowerCase().includes(destination.trim().toLowerCase())));
+        }
     };
+
+    const handerSearch = (e) => {
+      setDestination(e.target.value)
+      setFiltredList(hotelData.filter((hotel)=>hotel.city.trim().toLowerCase().includes(e.target.value.trim().toLowerCase())));
+    }
 
     const handlerReset = () => {
       setFiltredList([]);
@@ -33,7 +40,7 @@ const ListHotels= () => {
     if(status === "loading"){
       content = <p>loading...</p>
     } else if(status === "succeeded"){
-      content = (filtredList.length>0? filtredList:hotelData).map((hotel,index) => <HotelCard dataHotel={hotel} key={index} />)
+      content = (filtredList.length>0? filtredList : hotelData).map((hotel,index) => <HotelCard dataHotel={hotel} key={index} />)
     } else if(status === "failed"){
       content = <p>{error}</p>
     }
@@ -52,17 +59,21 @@ const ListHotels= () => {
               </span>
               <input
                 type="search"
-                id="destination"
+                id="destination" 
                 className="form-control border-start-0"
                 placeholder="Where are you going?"
                 value={destination}
-                onChange={(e) => setDestination(e.target.value)}
+                onChange={handerSearch}
                 required
               />
             </div>
           </div>
         </div>
         <div className="mt-4">
+          {filtredList.length === 0 && destination.length > 0 ? <div>
+            <p className='alert alert-danger'>No Hotel available in : {destination}</p>
+          </div> :""}
+          
           <button type="submit" className="btn btn-primary px-4">
             Search Hotels
           </button>

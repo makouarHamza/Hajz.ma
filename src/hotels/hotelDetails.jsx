@@ -1,6 +1,6 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom"
-import { allHotelsData } from "./hotelsSlice";
+import { addCommentToHotel, allHotelsData } from "./hotelsSlice";
 import { CheckCircle2, Coffee, Heart, MapPin, MessageSquare, Send, Star, ThumbsUp, Wifi, Wind, Wine } from "lucide-react";
 import { use, useState } from "react";
 
@@ -8,16 +8,20 @@ function HotelDetails() {
     const { idDetailHotel } = useParams();
     const hotelData = useSelector(allHotelsData)
     const navigate = useNavigate();
+    const dispatch = useDispatch();
     const [comment, setComment] = useState("")
     const onChangeComment = (e) => setComment(e.target.value);
+
+    
+    const existingHotel = hotelData.find((hotel) => hotel.id === idDetailHotel);
+
     const HandlerBtnSend = () => {
         if(comment.trim() !== ""){
             alert("Comment submitted: " + comment);
             setComment("");
+            dispatch(addCommentToHotel({comment: comment.trim(), existingHotel: existingHotel}));
         }
     }
-    
-    const existingHotel = hotelData.find((hotel) => hotel.id === idDetailHotel);
 
     if(!existingHotel){
         return(<div className="container mt-5">Hotel not found.</div>);

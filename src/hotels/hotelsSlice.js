@@ -30,8 +30,14 @@ export const addHotel = createAsyncThunk("hotels/addHotel", async (addedHotel)=>
     return response.data
 })
 
-export const editHotel = createAsyncThunk("hotel/editHotel", async (editedHotel) => {
+export const editHotel = createAsyncThunk("hotels/editHotel", async (editedHotel) => {
     const response = await axios.put(`${HOTEL_URL}/${editedHotel.id}`, editedHotel);
+    return response.data;
+})
+
+export const addCommentToHotel = createAsyncThunk("hotels/addCommentToHotel", async ({comment, existingHotel}) => {
+    const updatedComment = [...existingHotel.commentaires, comment]
+    const response = await axios.patch(`${HOTEL_URL}/${existingHotel.id}`,{commentaires: updatedComment});
     return response.data;
 })
 
@@ -70,7 +76,14 @@ const hotelsSlice = createSlice({
                 // Correct way: Replace the item at that index with the new data
                 state.hotels[indexToEdit] = action.payload;
             }
-        });
+        })
+        .addCase(addCommentToHotel.fulfilled, (state, action) => {
+            state.status = 'succeeded';
+            const indexToEdit = state.hotels.findIndex(hotel => hotel.id === action.payload.id);
+            if (indexToEdit !== -1) {
+                state.hotels[indexToEdit] = action.payload;
+            }
+        })
         
     }
 })

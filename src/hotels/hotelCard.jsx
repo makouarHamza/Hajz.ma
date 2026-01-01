@@ -1,4 +1,4 @@
-import { Coffee, MapPin, Star, Wifi, Wind } from "lucide-react";
+import { CheckCircle2, Coffee, MapPin, Star, Wifi, Wind } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 function HotelCard({dataHotel}){
@@ -36,15 +36,11 @@ function HotelCard({dataHotel}){
                         </div>
 
                         <div className="d-flex flex-wrap gap-2 my-3">
-                            <span className="badge bg-light text-dark border d-flex align-items-center py-2 px-3">
-                                <Wifi size={14} className="me-2"/> Wifi
-                            </span>
-                            <span className="badge bg-light text-dark border d-flex align-items-center py-2 px-3">
-                                <Coffee size={14} className="me-2"/> Breakfast
-                            </span>
-                            <span className="badge bg-light text-dark border d-flex align-items-center py-2 px-3">
-                                <Wind size={14} className="me-2"/> Spa
-                            </span>
+                                {dataHotel.amenities.map((amenity, index) => (
+                                    <span key={index} className="badge bg-light text-dark border d-flex align-items-center py-2 px-3">
+                                        <CheckCircle2 size={14} className="me-2 text-success"/> {amenity}
+                                    </span>
+                                ))}
                         </div>
 
                         <hr className="my-auto"/>

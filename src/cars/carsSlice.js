@@ -14,6 +14,21 @@ export const getDataCars = createAsyncThunk('cars/getDataCars',async () => {
     return response.data;
 })
 
+export const addCars = createAsyncThunk("cars/addCars", async (obj) => {
+    const response = await axios.post(CARS_URL,obj)
+    return response.data
+})
+
+export const deleteCars = createAsyncThunk("cars/deleteCars", async (id) => {
+    const response = await axios.delete(`${CARS_URL}/${id}`)
+    return id
+})
+
+export const editCars = createAsyncThunk("cars/editCars", async (obj) => {
+    const response = await axios.put(`${CARS_URL}/${obj.id}`, obj)
+    return response.data
+})
+
 const carsSlice = createSlice({
     name: 'cars',
     initialState,
@@ -29,6 +44,21 @@ const carsSlice = createSlice({
         builder.addCase(getDataCars.fulfilled, (state, action) => {
             state.status = 'succeeded'
             state.cars = action.payload
+        })
+        builder.addCase(addCars.fulfilled, (state, action) => {
+            state.status = 'succeeded'
+            state.cars.push(action.payload)
+        })
+        builder.addCase(deleteCars.fulfilled, (state, action) => {
+            state.status = 'succeeded'
+            state.cars = state.cars.filter(car => car.id !== action.payload)
+        })
+        builder.addCase(editCars.fulfilled, (state, action) => {
+            state.status = 'succeeded'
+            const index = state.cars.findIndex(car => car.id === action.payload.id);
+            if (index !== -1) {
+                state.cars[index] = action.payload;
+            }
         })
     }
 })

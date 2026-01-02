@@ -3,7 +3,7 @@ import { Briefcase, Fuel, Settings, Users } from "lucide-react";
 function CardCar ({car}) {
     return (
         <>
-        <div className="card shadow-sm border-0 rounded-4 overflow-hidden" style={{ maxWidth: '400px' }}>
+        <div className="card shadow-sm border-0 rounded-4 overflow-hidden" style={{ maxWidth: '700px' }}>
             {/* Image Section */}
             <img 
                 src={car.imageUrl} 

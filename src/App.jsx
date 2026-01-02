@@ -15,8 +15,9 @@ import FlightsList from './flights/flightList';
 import NotFoundPage from './pages/NotFoundPage';
 import Home from './pages/Home';
 import HotelDetails from './hotels/hotelDetails';
-import CardCar from './cars/carCard';
 import ListCars from './cars/carsList';
+import CarsManage from './cars/carsManage';
+import CarsFrom from './cars/CarsFrom';
 
 function App() {
   const [isAdmin,setIsAdmin] = useState(false);
@@ -86,7 +87,9 @@ function App() {
           <Route path='cars' element={<ListCars />}/>
           <Route path='flights' element={<FlightsList/>}/>
           <Route path='hotels' element={ <ListHotels /> }/>
-          <Route path='manageCars' element={<h1>manage Cars</h1>}/>
+          <Route path='manageCars' element={<CarsManage />}/>
+          <Route path='manageCars/addEditCar' element={<CarsFrom />}/>
+          <Route path='manageCars/addEditCar/:idToEdit' element={<CarsFrom />} />
           <Route path='manageHotels' element={ <HotelManage /> }/>
           <Route path='manageHotels/addEditHotel' element={ <NewHotelForm /> }/>
           <Route path='manageHotels/addEditHotel/:idToEdit' element={ <NewHotelForm /> }/>

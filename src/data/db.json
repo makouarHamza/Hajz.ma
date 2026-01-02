@@ -5,8 +5,8 @@
       "nameHotel": "Farah I",
       "description": "Situé à Ifrane dans la région moyen atlas...",
       "city": "Ifrane",
-      "price": 230,
-      "rating": 5,
+      "price": "240",
+      "rating": "4.9",
       "images": [
         "ifraneHotel1.jpg",
         "ifraneHotel2.jpg",
@@ -16,15 +16,21 @@
         "trop loin du center ville",
         "l'accueil top",
         "best",
-        "thank"
+        "thank",
+        "///",
+        "beauty",
+        "sdsdsd",
+        "ssfdsfd fefd",
+        "vcxv vcv",
+        "/"
       ],
       "amenities": [
         "Piscine à débordement",
         "Vue montagne",
         "Restaurant Gastronomique"
       ],
-      "like": 16,
-      "heart": 6,
+      "like": 17,
+      "heart": 10,
       "id": "e6fc"
     },
     {
@@ -59,9 +65,9 @@
       "idHotel": "",
       "nameHotel": "palais de fes",
       "description": "palaia des fes amazig view",
-      "city": "fes",
+      "city": "Fez",
       "price": "232",
-      "rating": "3.9",
+      "rating": "3.7",
       "images": [
         "palaisdeFes2.jpg",
         "palaisdeFes1.jpg",
@@ -126,5 +132,43 @@
       "cabinClass": "First Class",
       "price": "333"
     }
+  ],
+  "cars": [
+    {
+    "id": 1,
+    "name": "Toyota Camry",
+    "provider": "Enterprise",
+    "category": "Economy",
+    "passengers": 5,
+    "bags": 3,
+    "transmission": "Automatic",
+    "fuelType": "Hybrid",
+    "price": 45,
+    "imageUrl": "https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    "id": 2,
+    "name": "Ford Explorer",
+    "provider": "Hertz",
+    "category": "SUV",
+    "passengers": 7,
+    "bags": 4,
+    "transmission": "Automatic",
+    "fuelType": "Gasoline",
+    "price": 85,
+    "imageUrl": "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    "id": 3,
+    "name": "Tesla Model 3",
+    "provider": "Sixt",
+    "category": "Electric",
+    "passengers": 5,
+    "bags": 2,
+    "transmission": "Automatic",
+    "fuelType": "Electric",
+    "price": 95,
+    "imageUrl": "https://images.unsplash.com/photo-1536700503339-1e4b06520771?auto=format&fit=crop&w=800&q=80"
+  }
   ]
 }
